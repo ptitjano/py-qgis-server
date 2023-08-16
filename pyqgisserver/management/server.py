@@ -93,6 +93,8 @@ class _RootHandler(BaseHandler):
         LOGGER.debug("uri %s", req.uri)
         LOGGER.debug("path %s", req.path)
         LOGGER.debug("path %s", req.remote_ip)
+        LOGGER.debug("headers %s", req.headers)
+        # req.headers.get("X-Real-IP")
 
         def _link(path: str, title: str):
             return {
@@ -183,6 +185,7 @@ class _Management(tornado.web.Application):
                          default_handler_class=NotFoundHandler)
 
         self.http_proxy = confservice.getboolean('server', 'http_proxy')
+        LOGGER.debug("PROXY used %s", self.http_proxy)
 
     def log_request(self, handler: tornado.web.RequestHandler) -> None:
         """ Write HTTP requet to the logs
