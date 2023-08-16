@@ -88,8 +88,11 @@ class _RootHandler(BaseHandler):
         """ Return links to default api entries
         """
         req = self.request
-        LOGGER.debug("IUUU %s", req.host)
-        LOGGER.debug("IUUU %s", req.host_name)
+        LOGGER.debug("host %s", req.host)
+        LOGGER.debug("host_name %s", req.host_name)
+        LOGGER.debug("uri %s", req.uri)
+        LOGGER.debug("path %s", req.path)
+        LOGGER.debug("path %s", req.remote_ip)
 
         def _link(path: str, title: str):
             return {
