@@ -92,10 +92,11 @@ class _RootHandler(BaseHandler):
         LOGGER.debug("host_name %s", req.host_name)
         LOGGER.debug("uri %s", req.uri)
         LOGGER.debug("path %s", req.path)
-        LOGGER.debug("path %s", req.remote_ip)
+        LOGGER.debug("remote ip %s", req.remote_ip)
         LOGGER.debug("headers %s", req.headers)
-        LOGGER.debug("headers 2 %s", self.request.headers.get("X-Real-IP", None))
-        LOGGER.debug("headers 3 %s", self.request.headers.get("X-Forwarded-For", None))
+        LOGGER.debug("x-real-ip %s", self.request.headers.get("X-Real-IP", None))
+        LOGGER.debug("x-forwarded-for %s", self.request.headers.get("X-Forwarded-For", None))
+        LOGGER.debug("x-forwarded-host %s", self.request.headers.get("X-Forwarded-Host", None))
 
         def _link(path: str, title: str):
             return {
