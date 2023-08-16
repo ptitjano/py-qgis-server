@@ -89,6 +89,7 @@ class _RootHandler(BaseHandler):
         """
         req = self.request
         LOGGER.debug("IUUU %s", req.host)
+        LOGGER.debug("IUUU %s", req.host_name)
 
         def _link(path: str, title: str):
             return {
