@@ -96,6 +96,7 @@ class AsyncClientHandler(BaseHandler):
 
             self._stats.num_requests += 1
 
+            LOGGER.debug("query %s", query)
             response = await self._client.fetch(query=query, method=method,
                                                 headers=headers, data=data,
                                                 timeout=self._timeout)
