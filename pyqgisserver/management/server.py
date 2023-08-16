@@ -94,7 +94,8 @@ class _RootHandler(BaseHandler):
         LOGGER.debug("path %s", req.path)
         LOGGER.debug("path %s", req.remote_ip)
         LOGGER.debug("headers %s", req.headers)
-        # req.headers.get("X-Real-IP")
+        LOGGER.debug("headers 2 %s", self.request.headers.get("X-Real-IP", None))
+        LOGGER.debug("headers 3 %s", self.request.headers.get("X-Forwarded-For", None))
 
         def _link(path: str, title: str):
             return {
