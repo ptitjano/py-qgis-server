@@ -25,7 +25,7 @@ except ImportError:
     psutil = None
 
 from datetime import datetime
-from time import time
+from time import perf_counter, time
 from typing import Dict, Optional, Any, Tuple, Callable
 
 from qgis.PyQt.QtCore import Qt, QBuffer, QIODevice, QByteArray
@@ -470,7 +470,11 @@ class QgsRequestHandler(RequestHandler):
         else:
             # See https://github.com/qgis/QGIS/pull/9773
             iface.setConfigFilePath(config_path)
+            t0 = perf_counter()
             self.qgis_server.handleRequest(request, response, project=project)
+            t1 = perf_counter()
+            LOGGER.debug(f"QGIS_SERVER, handle request: {t1 - t0}")
+
 
     @classmethod
     def get_report(cls):
